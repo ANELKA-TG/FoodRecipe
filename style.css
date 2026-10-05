@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fdfdfd;
+  color: #2d3436;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.search-box {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 22px 30px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: 1px solid #e5e5e5;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+  background: #fff;
+}
+
+.search-box input::placeholder {
+  color: #777;
+}
+
+.search-box button {
+  padding: 0 40px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: #4caf50;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-box button:hover {
+  background: #43a047;
+}
+
+.random-btn {
+  padding: 18px 36px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #ff9800;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.35);
+  transition: transform 0.15s, background 0.2s;
+}
+
+.random-btn:hover {
+  background: #fb8c00;
+  transform: translateY(-2px);
+}
+
+/* Message */
+.message {
+  margin-top: 40px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/* Results (for later, when JS is added) */
+#recipe-result {
+  margin-top: 30px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .search-box input,
+  .search-box button {
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  .message {
+    font-size: 1.05rem;
+  }
+}
