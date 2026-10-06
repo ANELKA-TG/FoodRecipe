@@ -1,3 +1,4 @@
+
 const API = "https://www.themealdb.com/api/json/v1/1";
  
 const searchInput = document.getElementById("search-input");
@@ -9,9 +10,9 @@ const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
 const modalClose = document.getElementById("modal-close");
  
-let currentMeals = []; // the meals currently shown on the page
+let currentMeals = []; 
  
-// ---------- Helpers ----------
+// Helpers 
 async function fetchMeals(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error("Network error");
@@ -37,7 +38,7 @@ function createCard(meal) {
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
       <div class="recipe-info">
         <h3>${meal.strMeal}</h3>
-        <p class="tags">${meal.strCategory || "Recipe"} • ${meal.strArea || "Unknown"}</p>
+        <p class="tags">${meal.strCategory || "Recipe"} . ${meal.strArea || "Unknown"}</p>
         <button class="toggle-btn">View Recipe</button>
       </div>
     </article>
@@ -57,7 +58,7 @@ function openModal(meal) {
   modalContent.innerHTML = `
     <img class="modal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}" />
     <h2>${meal.strMeal}</h2>
-    <p class="tags">${meal.strCategory || "Recipe"} • ${meal.strArea || "Unknown"}</p>
+    <p class="tags">${meal.strCategory || "Recipe"} . ${meal.strArea || "Unknown"}</p>
     <h4>Ingredients</h4>
     <ul>${ingredients}</ul>
     <h4>Instructions</h4>
@@ -71,15 +72,15 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
 }
  
-// ---------- Actions ----------
+// Actions 
 async function loadInitialRecipes() {
   message.textContent = "Loading recipes...";
   try {
-    const meals = await fetchMeals(API + "/search.php?s=chicken");
-    showMeals(meals.slice(0, 6));
+    const meals = await fetchMeals(API + "/search.php?s=");
+    showMeals(meals.slice(0, 17));
     message.textContent = "Search for a recipe or get a random one!";
   } catch (err) {
-    message.textContent = "Could not load recipes. Check your connection.";
+    message.textContent = err;
   }
 }
  
@@ -117,7 +118,7 @@ async function getRandomRecipe() {
   }
 }
  
-// ---------- Events ----------
+// Events 
 searchBtn.addEventListener("click", searchRecipes);
  
 searchInput.addEventListener("keydown", (e) => {
@@ -135,7 +136,8 @@ modalOverlay.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
- 
+
+
 // "View Recipe" button on any card (event delegation)
 result.addEventListener("click", (e) => {
   if (!e.target.classList.contains("toggle-btn")) return;
